@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categorías - Copa Tintal 2025</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffcc00, #000);
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(0,0,0,0.6);
+      border-bottom: 3px solid #ffcc00;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .categoria-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .categoria {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ffcc00;
+      border-radius: 20px;
+      padding: 1.5rem;
+      width: 300px;
+      box-shadow: 0 0 15px #ffcc00;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .categoria:hover {
+      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .categoria h2 {
+      text-align: center;
+      margin: 0 0 1rem 0;
+      font-size: 1.5rem;
+      color: #ffcc00;
+    }
+
+    .deportistas {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .deportista {
+      background-color: rgba(0,0,0,0.4);
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .deportista span {
+      flex-grow: 1;
+    }
+
+    .btn-pagar {
+      background-color: #ffcc00;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+
+    .admin-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .admin-panel {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      background: black;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ffcc00;
+      z-index: 100;
+    }
+
+    .admin-panel input {
+      width: 100%;
+      padding: 0.4rem;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+    }
+
+    .show {
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Top Velocistas Tintal</h1>
+</header>
+
+<button class="admin-btn" onclick="toggleAdminPanel()">Admin</button>
+
+<div class="admin-panel" id="adminPanel">
+  <input type="password" placeholder="Contraseña" id="adminPassword" />
+  <button onclick="loginAdmin()">Ingresar</button>
+</div>
+
+<section class="categoria-container">
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>4 años damas - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>4 años varones - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>5 años damas - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>5 años varones - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+ <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>6 años damas - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>6 años caballeros - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>7 años damas - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>7 años caballeros - Semiprofesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>7 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>7 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>8 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>8 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>9 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>9 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>10 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>10 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>11 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>11 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>12 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>12 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>13 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>13 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+   <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>14 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>14 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>15 años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>15 años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>16 y mas años damas - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1></div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+  <div class="categoria" onclick="toggleDeportistas(this)">
+    <h2>16 y mas años varones - profesional</h2>
+    <div class="deportistas">
+      <div class="deportista"><span>Patinadora 1</div>
+      <div class="deportista"><span>Patinadora 2</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleDeportistas(card) {
+    const list = card.querySelector('.deportistas');
+    list.style.display = list.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function toggleAdminPanel() {
+    const panel = document.getElementById('adminPanel');
+    panel.classList.toggle('show');
+  }
+
+  function loginAdmin() {
+    const password = document.getElementById('adminPassword').value;
+    if (password === 'copatintal2025') {
+      alert('Modo edición activado');
+      // Aquí podrías habilitar inputs para editar nombres
+    } else {
+      alert('Contraseña incorrecta');
+    }
+  }
+</script>
+
+</body>
+</html>
